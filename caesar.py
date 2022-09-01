@@ -18,10 +18,10 @@ def encrypt(key, plaintext):
         crypt = orig + key
         #print(orig)
         if (orig in cap) and crypt > ord('Z'):
-            crypt = ord('A') + (crypt - (ord('Z') - 1))
+            crypt = ord('A') + (crypt - (ord('Z') + 1))
             #print(chr(crypt))
         elif (orig in low) and crypt > ord('z'):
-            crypt = ord('a') + (crypt - (ord('z') - 1))
+            crypt = ord('a') + (crypt - (ord('z') + 1))
 
         ciphertext = ciphertext + chr(crypt)
         #print(chr(crypt))
