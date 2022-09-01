@@ -17,15 +17,22 @@ def encrypt(key, plaintext):
         orig = ord(plaintext[x])
         crypt = orig + key
         #print(orig)
-        if (orig in cap) and crypt > ord('Z'):
-            crypt = ord('A') + (crypt - (ord('Z') + 1))
-            #print(chr(crypt))
-        elif (orig in low) and crypt > ord('z'):
-            crypt = ord('a') + (crypt - (ord('z') + 1))
+        if key >= 0:
+            if (orig in cap) and crypt > ord('Z'):
+                crypt = ord('A') + (crypt - (ord('Z') + 1))
+                #print(chr(crypt))
+            elif (orig in low) and crypt > ord('z'):
+                crypt = ord('a') + (crypt - (ord('z') + 1))
+        else:
+            if (orig in cap) and crypt < ord('A'):
+                crypt = ord('Z') - (ord('A') - (crypt + 1))
+                print(chr(crypt))
+            elif (orig in low) and crypt > ord('z'):
+                crypt = ord('z') - (ord('z') - (crypt + 1))
 
         ciphertext = ciphertext + chr(crypt)
-        #print(chr(crypt))
-        #print(ciphertext)
+        print(chr(crypt))
+        print(ciphertext)
     return ciphertext
 
 
@@ -46,12 +53,20 @@ def decrypt(key, ciphertext):
         orig = crypt - key
         #print(chr(crypt))
         #print(chr(orig))
-        if (crypt in cap) and orig < ord('A'):
-            orig = ord('Z') - (ord('A') - (orig + 1))
-            #print(chr(crypt))
-            #print(chr(orig))
-        elif (crypt in low) and orig < ord('a'):
-            orig = ord('z') - (ord('a') - (orig + 1))
+        if key >= 0:
+            if (crypt in cap) and orig < ord('A'):
+                orig = ord('Z') - (ord('A') - (orig + 1))
+                #print(chr(crypt))
+                #print(chr(orig))
+            elif (crypt in low) and orig < ord('a'):
+                orig = ord('z') - (ord('a') - (orig + 1))
+        else:
+            if (crypt in cap) and orig > ord('Z'):
+                orig = ord('A') + (orig - (ord('Z')+1))
+                #print(chr(crypt))
+                #print(chr(orig))
+            elif (crypt in low) and orig < ord('a'):
+                orig = ord('a') + (orig - (ord('z')+1))
 
         plaintext = plaintext + chr(orig)
         #print(chr(orig))
