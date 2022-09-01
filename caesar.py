@@ -54,6 +54,6 @@ def decrypt(key, ciphertext):
             orig = ord('z') - (ord('a') - (orig + 1))
 
         plaintext = plaintext + chr(orig)
-        print(chr(orig))
-        print(plaintext)
+        #print(chr(orig))
+        #print(plaintext)
     return plaintext
