@@ -31,8 +31,8 @@ def encrypt(key, plaintext):
                 crypt = ord('z') - (ord('z') - (crypt + 1))
 
         ciphertext = ciphertext + chr(crypt)
-        print(chr(crypt))
-        print(ciphertext)
+        #print(chr(crypt))
+        #print(ciphertext)
     return ciphertext
 
 
